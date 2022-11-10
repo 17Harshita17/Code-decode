@@ -1,0 +1,98 @@
+# Code-decode
+We see here a large number of code which are useful and help to understand the programs
+#include<iostream>
+using namespace std;
+
+class node
+{
+    public:
+        int val;
+        node* next;
+};
+
+class linked
+{
+    private:
+       node* start;
+    public:
+       linked();
+       void traverse();
+       void insert_front(int);
+       void reverse();
+};
+
+void linked::traverse()
+{
+    node* ptr=start;
+    while(ptr!=NULL)
+    {
+        cout<<ptr->val;
+        ptr=ptr->next;
+    }
+return;
+}
+
+void linked::insert_front(int value)
+{
+    node* newnode;
+    newnode=new node();
+    if(newnode==NULL)
+    {
+        cout<<"Overflow";
+        return;
+    }
+    newnode->val=value;
+    newnode->next=start;
+return;
+}
+
+linked::linked()
+{
+    start=NULL;    
+}
+
+void linked::reverse()
+{
+    node* ptr=start;
+    node* before=ptr;
+    node* after=start->next;
+    while(ptr!=NULL)
+    {
+        while(after!=NULL)
+        {
+            before->next=after;
+            after=after->next;
+        }
+        after->next=start;
+        before->next=NULL;
+        start=after;
+        ptr=ptr->next;
+    }
+}
+
+int main()
+{
+    linked l1;
+    int number;
+    cout<<"Enter number";
+    cin>>number;
+    int data;
+    
+    while(number!=0)
+    {
+        cout<<"Enter the value:";
+        cin>>data;
+        l1.insert_front(data);
+        number--;
+    }
+    
+    cout<<"Before reverse the linked list is:";
+    l1.traverse();
+    
+    l1.reverse();
+    
+    cout<<"After reverse the linked list is:";
+    l1.traverse();
+return 0;
+}
+
