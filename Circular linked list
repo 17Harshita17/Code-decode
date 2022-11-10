@@ -1,0 +1,163 @@
+# Code-decode
+We see here a large number of code which are useful and help to understand the programs
+#include<iostream>
+using namespace std;
+
+class node
+{
+    public:
+    int data;
+    node* next;
+};
+
+class linked
+{
+  private:
+  node* start;
+  public:
+  linked()
+  {
+      start=NULL;
+  }
+  node* getnode();
+  void traverse();
+  void add_first(int);
+  void add_after(int,int);
+  void count();
+  void search(int);
+  void del_node(int );
+};
+
+void linked::del_node(int num)
+{
+    node* ptr;
+    ptr=start;
+    node* preptr;
+    preptr=NULL;
+    do
+    {
+        preptr=ptr;
+        ptr=ptr->next;
+    }while(ptr!=start && ptr->data!=num);
+    
+    int x;
+    cout<<"\n"<<ptr->data<<"gone to delete\n";
+    preptr->next=ptr->next;
+    free(ptr);
+}
+void linked::count()
+{
+    int cnt=0;
+    node* ptr;
+    ptr=start;
+    if(start==NULL)
+    {
+       cout<<"linked list is empty";
+       return;
+    }
+    do
+    {
+        ptr=ptr->next;
+        cnt++;
+    }while(ptr->next!=start);
+    cout<<cnt;
+return ;
+}
+
+
+node* linked::getnode()
+{
+    node* n;
+    n=new node();
+return n;
+}
+
+void linked::traverse()
+{
+    node* ptr;
+    ptr=start;
+
+    if(start==NULL)
+    {
+        cout<<"listed is empty";
+        return;
+    }
+    
+   do
+   {
+       cout<<ptr->data;
+       ptr=ptr->next;
+   }while(ptr->next!=start);
+}
+
+void linked:: add_first(int item)
+{
+    node* newnode;
+    newnode=getnode();
+    node* ptr;
+    ptr=start;
+    newnode->data=item;
+    if(start==NULL)
+    {
+        newnode->next=newnode;
+        start=newnode;
+    }
+    newnode->next=start;
+    do
+    {
+        ptr=ptr->next;
+    }while(ptr->next!=start);
+      
+    ptr->next=newnode;
+return;
+}
+
+
+
+
+int main()
+{
+    int item,num,ch;
+   linked l1;
+   cout<<"\n"<<"Enter your Choice";
+   do
+   {
+       cout<<"press 1:- traverse:"<<endl;
+       //cout<<"press 2:- addafter:"<<endl;
+       cout<<"press 3:- addfirst:"<<endl;
+       cout<<"press 4:- count:"<<endl;
+       cout<<"Enter your choice:";
+       cin>>ch;
+       switch(ch)
+       {
+         case 1:
+              l1.traverse();
+              break;
+              
+        // case 2:
+             // cout<<"enter item and num";
+             // cin>>item;
+             // cin>>num;
+             // l1.add_after(item,num);
+            //  break;
+         
+         case 3:
+            cout<<"enter item ";
+            cin>>item;
+            l1.add_first(item);
+            break;
+            
+         case 4:
+            l1.count();
+            break;
+         case 5:
+            break;
+            
+         default:
+             cout<<"invalid input";
+         }
+       }while(ch!=7);
+return 0;
+};
+
+
