@@ -1,0 +1,50 @@
+# Understand-the-Code
+We see here a large number of code which are useful and help to understand the programs
+
+#include<iostream>
+using namespace std;
+
+quick_sorting(int arr[],int lb,int ub)
+{
+   int pivot=arr[lb];
+   int down=lb;
+   int up=ub;
+   while(down<up)
+   {
+      while(arr[down]<=pivot && down<up)
+      {
+         down++;
+      }
+     while(arr[up]<=pivot )
+      {
+         up--;
+      }
+      if(down<up)
+      {
+        int t=arr[down];
+        arr[down]=arr[up];
+        arr[up]=t;
+
+      }
+
+   }
+
+
+}
+
+
+int main()
+{
+  int *arr;
+  int n;
+  cout<<"enter the size of an arry:";
+  cin>>n;
+  arr=new int(n);
+  cout<<"enter the elements of an array:\n";
+  for(int i=0;i<n;i++)
+  {
+    cout<<"element"<<i+1<<" is: ";
+    cin>>arr[i];
+  }
+  quick_sorting(arr,0,n-1);
+}
