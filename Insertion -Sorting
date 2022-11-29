@@ -1,0 +1,46 @@
+# Code-decode
+We see here a large number of code which are useful and help to understand the programs
+#include<iostream>
+using namespace std;
+
+ void insertion_sorting(int arr[],int n)
+   {
+     for(int j=0;j<n-1;j++)
+     {
+       for(int i=j+1;i<n;i++)
+       {
+         if(arr[j]>arr[i])
+         {
+           int t=arr[i];
+           arr[j]=arr[i];
+           arr[i]=t;
+         }
+
+       }
+     }
+
+   }
+
+   int main()
+   {
+     int *arr,n;
+     cout<<"Enter the size of an array:";
+     cin>>n;
+     arr=new int(n);
+     cout<<"Enter the elements of array:\n";
+     for(int i=0;i<n;i++)
+     {
+       cout<<"elenent "<<i+1<<" is: ";
+       cin>>arr[i];
+     }
+
+     insertion_sorting(arr,n);
+
+     cout<<"\nArray after sorting:\n";
+     for(int i=0;i<n;i++)
+     {
+       cout<<"\n elenent "<<i+1<<" is: ";
+       cout<<arr[i];
+     }
+    return 0;
+   }
